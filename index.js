@@ -53,17 +53,17 @@ app.post('/upload',  function(req, res){
       if(!filename || filename.match(/\.(jpg|jpeg|png)$/i)) {
         io.emit('chat message', {
           tipo: 'foto',
-          data: 'http://localhost:3007/' + filename
+          data: 'https://www.infisio.com.br/' + filename
         })
       } else if (filename.match(/\.(mp4|ogg|ogv)$/i)) {
         io.emit('chat message', {
           tipo: 'video',
-          data: 'http://localhost:3007/' + filename
+          data: 'https://www.infisio.com.br/' + filename
         })
       } else {
         io.emit('chat message', {
           tipo: 'arquivo',
-          data: 'http://localhost:3007/' + filename
+          data: 'https://www.infisio.com.br/' + filename
         })
       }
 
