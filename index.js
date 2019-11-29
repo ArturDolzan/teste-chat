@@ -5,8 +5,11 @@ var io = require('socket.io')(http)
 const formidable = require('formidable')
 const util = require('util')
 const path = require('path')
+const bodyParser = require('body-parser')
 
 var port = process.env.PORT || 3006
+
+app.use(bodyParser.json({limit: '500mb'}))
 
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/index.html')
@@ -26,7 +29,7 @@ app.get('/chat', function(req, res){
   res.sendFile(__dirname + '/index.html')
 })
 
-app.post('/upload', function(req, res){
+app.post('/upload',  function(req, res){
 
   if (req.url == '/upload' && req.method.toLowerCase() == 'post') {
     // parse a file upload
