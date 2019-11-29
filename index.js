@@ -6,7 +6,7 @@ const formidable = require('formidable')
 const util = require('util')
 const path = require('path')
 
-var port = process.env.PORT || 4001
+var port = process.env.PORT || 4006
 
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/index.html')
@@ -49,17 +49,17 @@ app.post('/upload', function(req, res){
       if(!filename || filename.match(/\.(jpg|jpeg|png)$/i)) {
         io.emit('chat message', {
           tipo: 'foto',
-          data: 'http://localhost:4002/' + filename
+          data: 'http://localhost:4007/' + filename
         })
       } else if (filename.match(/\.(mp4|ogg|ogv)$/i)) {
         io.emit('chat message', {
           tipo: 'video',
-          data: 'http://localhost:4002/' + filename
+          data: 'http://localhost:4007/' + filename
         })
       } else {
         io.emit('chat message', {
           tipo: 'arquivo',
-          data: 'http://localhost:4002/' + filename
+          data: 'http://localhost:4007/' + filename
         })
       }
 
@@ -91,8 +91,8 @@ console.log(dir)
 
 app.use(express.static(dir))
 
-app.listen(4002, function () {
-  console.log('Listening on http://localhost:4002/');
+app.listen(4007, function () {
+  console.log('Listening on http://localhost:4007/');
 });
 
 http.listen(port, function(){
