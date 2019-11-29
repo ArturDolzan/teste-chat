@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 var port = process.env.PORT || 3006
 
 app.use(bodyParser.json({limit: '500mb'}))
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: true, parameterLimit: 50000 }))
 
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/index.html')
